@@ -23,6 +23,7 @@
 					</td>
 					<td><%= link_to @book1.title, @book1 %></td>
 					<td><%= @book1.body %></td>
+					<%= render 'favorites/favorite', book: @book1%>
 				<% if @book1.user_id == current_user.id %>
 					<td><%= link_to "Edit",edit_book_path(@book1), class: "btn-sm btn-success edit_book_#{@book1.id}" %></td>
 					<td><%= link_to "Destroy",@book1, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book_#{@book1.id}" %></td>

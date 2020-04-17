@@ -6,6 +6,7 @@ class BooksController < ApplicationController
   	@book1 = Book.find(params[:id])
     @user = @book1.user
     @book = Book.new
+    @favorite = Favorite.new
   end
 
   def index
@@ -45,6 +46,19 @@ class BooksController < ApplicationController
   	@book = Book.find(params[:id])
   	@book.destroy
   	redirect_to books_path, notice: "successfully delete book!"
+  end
+
+  def fav
+    book = Book.find(params[:id])
+    if book.favorited_by?(current_user)
+      fav = current_user.favorites.find_by(book_id: book.id)
+      fav.destroy
+      render json: book.id
+    else
+      fav = current_user.favorites.new(book_id: book.id)
+      fav.save
+      render json: book.id
+    end
   end
 
   private

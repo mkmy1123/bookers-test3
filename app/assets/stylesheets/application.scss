@@ -15,6 +15,8 @@
  */
 @import "bootstrap-sprockets";  /*ここを追加*/
 @import "bootstrap";            /*ここを追加*/
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 
 header {
 	color:white;
@@ -32,3 +34,7 @@ body {
 .actions {
 	margin-top:10px;
 }
+
+.fa-heart {
+    color: red;
+  }
